@@ -1,0 +1,44 @@
+import java.util.concurrent.TimeUnit;
+ 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert; // To verify and validate the action
+ 
+public class LoginUsingSelenium {
+ 
+    public static void main(String[] args) {
+        
+        
+        System.setProperty("webdriver.chrome.driver", " path of driver ");
+        WebDriver driver=new ChromeDriver();
+        driver.manage().window().maximize();     // To maximize the browser window and visit it
+        driver.get("https://www.propertycapsule.com/");     // Chrome web driver will take up this site
+        driver.findElement(By.id("Enterprise Admin Login")    // Same for Deal maker Signup/Login
+        
+        WebElement username=driver.findElement(By.id("Login(Email)"));   // NOTE: finding the element with the mentioned keywords, keywords should be exactly same
+        WebElement password=driver.findElement(By.id("password"));
+        WebElement login=driver.findElement(By.xpath("//button[text()='Sign in']"));
+        
+        username.sendKeys("Ajackus123@gmail.com");
+        password.sendKeys("Ajackus@123");
+        login.click();
+        
+        String actualUrl="https://www.propertycapsule.com/"";
+        String expectedUrl= driver.getCurrentUrl();
+        
+        if(actualUrl.equalsIgnoreCase(expectedUrl))
+        {
+            System.out.println("Test passed");
+        }
+        else
+        {
+            System.out.println("Test failed");
+        }
+        
+        
+        
+    }
+ 
+}
